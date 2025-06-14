@@ -1,0 +1,252 @@
+/* ====================
+   基本設定とリセット
+   ==================== */
+* {
+    box-sizing: border-box; /* 全ての要素にボーダーとパディングを幅に含める */
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+    scroll-behavior: smooth; /* ページ内リンクを滑らかにスクロール */
+}
+
+body {
+    background-color: #303545;
+    color: #e2e8f0;
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden; /* 横方向のスクロールバーを非表示にする（レイアウト崩れ対策） */
+}
+
+h1, h2, h3, .site-logo, .nav-text, .item-title, .about-intro-text, .work-title, .back-to-top-text, .btn-view-all {
+    font-family: 'Press Start 2P', cursive;
+}
+
+a {
+    color: inherit; /* 親要素の文字色を継承 */
+    text-decoration: none; /* 下線を消す */
+}
+a:hover {
+    opacity: 0.8; /* ホバー時に少し透明にする（一般的な効果） */
+}
+
+/* ====================
+   Header 部分のスタイル
+   ==================== */
+header {
+    background-color: rgba(26, 32, 44, 0.8); /* 深いネイビーの半透明 */
+    backdrop-filter: blur(5px); /* 背景を少しぼかす（モダンな水中感） */
+    padding: 1.5rem 2rem; /* 上下左右のパディング */
+    position: fixed; /* 画面上部に固定 */
+    width: 100%; /* 幅を100%に */
+    left: 0;
+    z-index: 1000; /* 他のコンテンツの上に表示 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* わずかな影で浮遊感を出す */
+    
+}
+
+.header-wrapper {
+    display: flex; /* Flexboxを使って子要素を横並びにする */
+    justify-content: space-between; /* 要素を左右に配置（ロゴとナビ） */
+    align-items: center; /* 垂直方向中央揃え */
+    max-width: 1200px; /* 最大幅を設定（コンテンツの読みやすさのため） */
+    margin: 0 auto; /* 中央揃え */
+    padding-top: 20px; /* ドット絵のシャチと吹き出しの配置を想定して調整 */
+}
+
+.site-logo {
+    font-size: 1.8rem; /* ロゴの文字サイズ */
+    color: #3FD3D8; /* アクアブルーをロゴのアクセントカラーに（シャチと水のイメージ） */
+}
+
+.site-logo a {
+    color: inherit; /* ロゴのリンクも親の文字色を継承 */
+    transition: opacity 0.3s ease; /* 色変化を滑らかに */
+
+}
+
+.main-nav .nav-list {
+    list-style: none; /* リストの点を消す */
+    display: flex; /* リストアイテムを横並びにする */
+    gap: 2.5rem; /* リストアイテム間のスペース */
+}
+
+.nav-item a {
+    font-size: 1rem; /* ナビゲーションの文字サイズ */
+    color: #e2e8f0; /* 明るいグレー */
+    padding: 0.5rem 0; /* クリックしやすいようにパディングを設定 */
+    position: relative; /* ホバーアニメーションの基準点 */
+    transition: color 0.3s ease; /* 色変化を滑らかに */
+}
+
+.nav-item a:hover {
+    color: #3FD3D8; /* ホバー時にアクセントカラーに変化 */
+    opacity: 1; /* a:hover のデフォルトopacityを上書き */
+}
+
+/* ホバー時の波紋や下線などのアニメーションをここに記述（後で追加） */
+/* .nav-item a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #3FD3D8;
+    transition: width 0.3s ease;
+}
+.nav-item a:hover::after {
+    width: 100%;
+} */
+
+/* メディアクエリ（PCとスマホの切り替え） */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem 1rem;
+    }
+
+    .header-wrapper {
+        flex-direction: column; /* スマホでは縦並び */
+        align-items: flex-start; /* 左寄せ */
+        gap: 1rem;
+    }
+
+    .main-nav .nav-list {
+        flex-direction: column; /* ナビアイテムも縦並び */
+        gap: 0.5rem;
+        width: 100%; /* 幅をいっぱいに使う */
+        text-align: left; /* 左寄せ */
+    }
+
+    .nav-item a {
+        font-size: 1.1rem;
+        padding: 0.2rem 0;
+    }
+}
+
+/* ====================
+   topセクションのスタイル
+   ==================== */
+#main {
+    padding-top: 80px; /* ヘッダーの高さ分、上からオフセット */
+    
+    display: flex;
+    justify-content: center; /* 水平中央揃え */
+    align-items: center; /* 垂直中央揃え */
+    flex-direction: column; /* 要素を縦に並べる */ /* ここはそのまま */
+    
+    background: linear-gradient(180deg, #1a202c 0%, #0d121b 100%);
+    position: relative; 
+    overflow: hidden; 
+}
+
+#top {
+    padding-bottom: 300px;
+}
+
+.top-content {
+    /* ここをFlexbox/Gridでレイアウトする形に変更 */
+    display: flex;
+    text-align: center;
+    flex-direction: column; /* 吹き出し、シャチ、テキストを縦に並べる */
+    align-items: center; /* 水平中央揃え */
+    justify-content: center; /* 垂直中央揃え（Flexアイテムが複数ある場合） */
+    min-height: 400px;
+    
+    position: relative; /* 子要素のtransformの基準、またはz-indexの基準 */
+    z-index: 10; 
+}
+
+.chat-image {
+    width: 250px; 
+    height: auto;
+    display: block;
+    
+    position: absolute; /* ★絶対位置指定 */
+    top: 50px; /* ★上からの位置を調整 */
+    left: -25%; /* ★親要素の中央に仮配置 */
+    opacity: 0;
+    animation: fadeInSlideUp 1s forwards 0.5s;
+}
+
+.top-orca {
+   width: 300px;
+    height: auto;
+    display: block;
+    
+    position: absolute; /* ★絶対位置指定 */
+    top: 125px; /* ★上からの位置を調整 */
+    left: 40%; /* ★親要素の中央に仮配置 */
+
+
+    opacity: 0;
+    animation: 
+        fadeInSlideUp 1s ease-out 0.8s forwards,
+        orcaFloat 4s ease-in-out infinite 1.8s; 
+}
+
+.top-text {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.5rem; 
+    color: #e2e8f0;
+    margin-top: 500px; /* ★画像の下に来るようにmargin-topで調整 */
+    line-height: 1.8;
+    position: relative; /* 必要なら z-index のために */
+    z-index: 15; /* 画像の上に表示されるように */
+    opacity: 0;
+    animation: fadeInSlideUp 1s forwards 1.2s;
+}
+
+/* フェードイン＆スライドアップアニメーションのキーフレーム */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* シャチの浮遊アニメーションのキーフレーム */
+@keyframes orcaFloat {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); } /* 少し上に浮く */
+    100% { transform: translateY(0px); }
+}
+
+/* 泡のコンテナ (JSで泡を生成する場合、またはCSSで擬似要素として表現する場合の準備) */
+.bubble-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* クリックイベントを透過させる */
+    z-index: 5; /* メインコンテンツより奥に */
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    #main {
+    padding-top: 120px; /* ヘッダーの高さ分、上からオフセット */
+    }
+    #top {
+        padding-top: 60px; /* スマホ時のヘッダー高さに合わせて調整 */
+    }
+
+    .chat-image {
+        width: 180px; /* スマホでの吹き出しサイズ */
+    }
+
+    .top-orca {
+        width: 220px; /* スマホでのシャチサイズ */
+    }
+
+    .top-text {
+        font-size: 1.2rem; /* スマホでのテキストサイズ */
+    }
+}
