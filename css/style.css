@@ -373,3 +373,128 @@ header {
         font-size: 0.9rem;
     }
 }
+
+/* ====================
+   Works セクションのスタイル
+   ==================== */
+#works {
+    padding: 8rem 0; /* 上下のパディングを大きく取る */
+    text-align: center; /* セクション全体を中央揃え */
+    background-color: #303545; /* ボディと同じ背景色 */
+    position: relative;
+    overflow: hidden;
+}
+
+
+.works-wrapper {
+    display: grid; /* Gridレイアウトを使用 */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 可変グリッド */
+    gap: 3rem; /* グリッドアイテム間の隙間 */
+    max-width: 1000px; /* グリッド全体の最大幅 */
+    margin: 0 auto; /* 中央揃え */
+    padding: 0 2rem; /* 左右のパディング */
+}
+
+.work-card {
+    background-color: #2d3748; /* 暗めの背景色（カードのようなイメージ） */
+    border: 2px solid #3FD3D8; /* アクセントカラーのボーダー */
+    border-radius: 8px; /* 角丸 */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* 影で浮き出し感を出す */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* ホバーアニメーション用 */
+    display: flex;
+    align-items: center;
+    padding: 50px;
+}
+
+.work-card:hover {
+    transform: translateY(-10px); /* ホバー時に少し浮き上がる */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4); /* 影を濃くする */
+}
+
+.work-image {
+    width: 50%; /* 親要素の幅いっぱいに */
+    padding: 1rem; /* 内側の余白 */
+    box-sizing: border-box; /* paddingを含めてwidthを計算 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.work-image img {
+    max-width: 100%; /* 画像を親要素の幅いっぱいに広げる */
+    max-height: 10%; /* 高さは自動調整 */
+    height: auto;
+    display: block; /* 余分な下マージンを消す */
+    border-radius: 4px; /* 画像の角丸 */
+    object-fit: contain;
+}
+
+.work-info {
+    padding: 1rem 2rem; /* 上は0、左右2rem、下2remのパディング */
+    flex-grow: 1; /* 残りのスペースを埋める */
+    display: flex;
+    flex-direction: column;
+}
+
+.work-date {
+    font-size: 0.9rem;
+    color: #a0aec0; /* やや暗めのテキスト色 */
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.work-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.2rem;
+    color: #e2e8f0;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.work-description {
+    font-size: 1rem;
+    color: #cbd5e0;
+    line-height: 1.7;
+    margin-bottom: 1.5rem; /* ボタンなどがある場合の下マージン */
+    text-align: left;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    #works {
+        padding: 6rem 0;
+    }
+
+    .works-wrapper {
+        grid-template-columns: 1fr; /* 1列表示 */
+        gap: 1.5rem;
+        padding: 0 1.5rem;
+    }
+
+    .work-card {
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .work-image {
+        width: 100%;
+    }
+
+    .work-image img {
+    max-width: 100%; /* 画像を親要素の幅いっぱいに広げる */
+    max-height: 100%;
+    }
+
+    .work-info {
+        padding: 0 1.5rem 1.5rem;
+    }
+
+    .work-title {
+        font-size: 1.1rem;
+    }
+
+    .work-description {
+        font-size: 0.9rem;
+    }
+}
