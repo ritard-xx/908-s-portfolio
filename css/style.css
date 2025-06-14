@@ -136,8 +136,6 @@ header {
     justify-content: center; /* 水平中央揃え */
     align-items: center; /* 垂直中央揃え */
     flex-direction: column; /* 要素を縦に並べる */ /* ここはそのまま */
-    
-    background: linear-gradient(180deg, #1a202c 0%, #0d121b 100%);
     position: relative; 
     overflow: hidden; 
 }
@@ -248,5 +246,130 @@ header {
 
     .top-text {
         font-size: 1.2rem; /* スマホでのテキストサイズ */
+    }
+}
+
+/* ====================
+   About セクションのスタイル
+   ==================== */
+
+#about {
+    padding: 8rem 0; /* 上下のパディングを大きく取る */
+    text-align: center; /* セクション全体を中央揃え */
+    background-color: #303545; /* ボディと同じ背景色 */
+    position: relative; /* 必要に応じて子要素のposition基準に */
+    overflow: hidden; /* はみ出し対策 */
+}
+
+/* 共通セクションタイトル */
+.section-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2.5rem; /* 大きめのフォントサイズ */
+    color: #e2e8f0; /* 明るいグレー */
+    margin-bottom: 4rem; /* 下に大きなマージン */
+    display: inline-block; /* 背景色の線を引くために */
+    position: relative;
+}
+
+/* セクションタイトルの下線（ドット絵風） */
+.section-title::after {
+    content: '';
+    display: block;
+    width: 30%; /* タイトル幅の80% */
+    height: 6px; /* 下線の太さ */
+    background-color: #3FD3D8; /* アクセントカラー */
+    margin: 0.5rem auto 0; /* 中央揃え、上部に少しマージン */
+    border-radius: 3px; /* 少し角丸に */
+}
+
+.about-grid {
+    display: grid; /* Gridレイアウトを使用 */
+    grid-template-columns: repeat(3, 1fr); /* 3列均等に配置 */
+    gap: 3rem; /* グリッドアイテム間の隙間 */
+    max-width: 1200px; /* グリッド全体の最大幅 */
+    margin: 0 auto; /* 中央揃え */
+    padding: 0 2rem; /* 左右のパディング */
+}
+
+.about-item {
+    background-color: #2d3748; /* 暗めの背景色（カードのようなイメージ） */
+    border: 2px solid #3FD3D8; /* アクセントカラーのボーダー */
+    border-radius: 8px; /* 角丸 */
+    padding: 25px; /* 内側のパディング */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* 影で浮き出し感を出す */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* ホバーアニメーション用 */
+}
+
+.about-item:hover {
+    transform: translateY(-10px); /* ホバー時に少し浮き上がる */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4); /* 影を濃くする */
+}
+
+.about-item-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.3rem; /* タイトルフォントサイズ */
+    color: #e2e8f0; /* 明るいグレー */
+    margin-bottom: 1.5rem; /* 下にマージン */
+    position: relative;
+    padding-bottom: 0.5rem; /* ドット絵アイコンのスペースを考慮 */
+}
+
+/* about-item-title の下線（アイコンとテキストを分ける） */
+.about-item-title::after {
+    content: '';
+    display: block;
+    width: 60px; /* 下線の長さ */
+    height: 4px; /* 下線の太さ */
+    background-color: #3FD3D8;
+    margin: 0.8rem auto 0; /* 中央揃え、上部に少しマージン */
+    border-radius: 2px;
+}
+
+.about-item-content {
+    font-size: 1rem; /* 本文のフォントサイズ */
+    color: #cbd5e0; /* やや暗めのグレー */
+    line-height: 1.8;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 992px) {
+    .about-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2列表示 */
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #about {
+        padding: 6rem 0;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .about-intro-text {
+        font-size: 1.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr; /* 1列表示 */
+        gap: 1.5rem;
+        padding: 0 1.5rem;
+    }
+
+    .about-item {
+        padding: 2rem;
+    }
+
+    .about-item-title {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    .about-item-content {
+        font-size: 0.9rem;
     }
 }
