@@ -130,6 +130,8 @@ header {
    topセクションのスタイル
    ==================== */
 #main {
+    min-height: 500px; /* ★最低の高さを設定（コンテンツの量に合わせて調整） */
+    padding: 10rem 0 8rem;
     padding-top: 80px; /* ヘッダーの高さ分、上からオフセット */
     
     display: flex;
@@ -216,16 +218,7 @@ header {
     100% { transform: translateY(0px); }
 }
 
-/* 泡のコンテナ (JSで泡を生成する場合、またはCSSで擬似要素として表現する場合の準備) */
-.bubble-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* クリックイベントを透過させる */
-    z-index: 5; /* メインコンテンツより奥に */
-}
+
 
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
@@ -292,12 +285,14 @@ header {
 }
 
 .about-item {
-    background-color: #2d3748; /* 暗めの背景色（カードのようなイメージ） */
+    background-color: #314554; /* 暗めの背景色（カードのようなイメージ） */
     border: 2px solid #3FD3D8; /* アクセントカラーのボーダー */
     border-radius: 8px; /* 角丸 */
     padding: 25px; /* 内側のパディング */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* 影で浮き出し感を出す */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* ホバーアニメーション用 */
+    z-index: 2;
+    
 }
 
 .about-item:hover {
@@ -396,7 +391,7 @@ header {
 }
 
 .work-card {
-    background-color: #2d3748; /* 暗めの背景色（カードのようなイメージ） */
+    background-color: #314554; /* 暗めの背景色（カードのようなイメージ） */
     border: 2px solid #3FD3D8; /* アクセントカラーのボーダー */
     border-radius: 8px; /* 角丸 */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* 影で浮き出し感を出す */
@@ -404,6 +399,7 @@ header {
     display: flex;
     align-items: center;
     padding: 50px;
+    z-index: 2;
 }
 
 .work-card:hover {
@@ -497,4 +493,223 @@ header {
     .work-description {
         font-size: 0.9rem;
     }
+}
+
+/* ====================
+   Footer セクションのスタイル
+   ==================== */
+#footer {
+    padding: 6rem 0 2rem; /* 上は大きく、下は小さめにパディング */
+    text-align: center; /* フッター全体を中央揃え */
+    background-color: #303545; /* ボディと同じ背景色 */
+    color: #e2e8f0; /* テキスト色 */
+    font-size: 0.9rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-wrapper {
+    display: flex;
+    flex-direction: column; /* 要素を縦に並べる */
+    align-items: center; /* 水平方向の中央揃え */
+    max-width: 1000px; /* 最大幅を設定 */
+    margin: 0 auto; /* 中央揃え */
+    padding: 0 2rem; /* 左右のパディング */
+    gap: 2rem; /* 要素間の基本の隙間 */
+}
+
+/* Back to top ボタン */
+.back-to-top {
+    margin-bottom: 2rem; /* シャチとの間隔 */
+}
+
+.top-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 垂直方向の中央揃え */
+    text-decoration: none;
+    color: #e2e8f0; /* テキスト色 */
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.2rem; /* フォントサイズ */
+    transition: color 0.3s ease;
+}
+
+.top-button:hover {
+    color: #3FD3D8; /* ホバーでアクセントカラーに */
+}
+
+.arrow-icon {
+    margin-bottom: 0.5rem; /* 矢印とテキストの間隔 */
+    display: flex; /* SVGをflexアイテムとして扱う */
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow-icon svg {
+    width: 24px; /* SVGアイコンのサイズ */
+    height: 24px;
+    fill: #e2e8f0; /* SVGの塗りつぶし色 */
+    transition: fill 0.3s ease;
+}
+
+.top-button:hover .arrow-icon svg {
+    fill: #3FD3D8; /* ホバーでSVGの色も変更 */
+}
+
+/* Footer image (シャチのドット絵) */
+.footer-image {
+    margin-bottom: 3rem; /* ソーシャルアイコンとの間隔 */
+}
+
+.footer-image img {
+    width: 150px; /* ★画像のサイズを調整 (例: 150px) */
+    height: auto;
+    display: block;
+    margin: 0 auto; /* 中央揃え */
+}
+
+/* ソーシャルアイコンナビゲーション */
+.footer-nav {
+    display: flex; /* アイコンを横並びにする */
+    justify-content: center; /* 中央揃え */
+    gap: 2rem; /* アイコン間の隙間 */
+    margin-bottom: 4rem; /* コピーライトとの間隔 */
+}
+
+.social-icon {
+    display: flex; /* アイコンをFlexboxコンテナとして扱う */
+    align-items: center;
+    justify-content: center;
+    width: 70px; /* アイコンの背景円のサイズ */
+    height: 70px;
+    border-radius: 50%; /* 円形にする */
+    border: 1.5px solid #3FD3D8; /* アクセントカラーのボーダー */
+    background-color: #314554;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: #3FD3D8; /* ホバーで背景色をアクセントカラーに */
+    border-color: #3FD3D8; /* ボーダー色も変更 */
+}
+
+.social-icon svg {
+    width: 30px; /* SVGアイコンのサイズ */
+    height: 30px;
+    fill: #e2e8f0; /* SVGの塗りつぶし色 */
+    transition: fill 0.3s ease;
+}
+
+.social-icon:hover svg {
+    fill: #1a202c; /* ホバーでSVGの色を背景色に合わせる */
+}
+
+/* コピーライト */
+.copyright {
+    font-size: 0.8rem;
+    color: #a0aec0; /* やや暗めのテキスト色 */
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    #footer {
+        padding: 4rem 0 1.5rem;
+    }
+
+    .footer-wrapper {
+        gap: 1.5rem;
+    }
+
+    .back-to-top {
+        margin-bottom: 1.5rem;
+    }
+
+    .top-button {
+        font-size: 1rem;
+    }
+
+    .arrow-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .footer-image {
+        margin-bottom: 2rem;
+    }
+
+    .footer-image img {
+        width: 120px;
+    }
+
+    .footer-nav {
+        gap: 1rem;
+        margin-bottom: 3rem;
+    }
+
+    .social-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .social-icon svg {
+        width: 25px;
+        height: 25px;
+    }
+
+    .copyright {
+        font-size: 0.7rem;
+    }
+}
+
+
+/* ====================
+   泡アニメーションのスタイル
+   ==================== */
+
+.bubble-background {
+    position: fixed; /* ★ 画面に固定表示 */
+    top: 0;
+    left: 0;
+    width: 100vw; /* ★ ビューポートの幅いっぱいに */
+    height: 100vh; /* ★ ビューポートの高さ（画面全体）いっぱいに */
+    overflow: hidden;
+    z-index: 1; /* ★ ほとんどのコンテンツより後ろに配置（値は必要に応じて調整） */
+    pointer-events: none;
+}
+
+/* 泡の見た目 */
+.bubble {
+  position: absolute;
+  bottom: -50px;
+  background-color: transparent;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: inset 0 0 10px rgba(255,255,255,0.2);
+  animation: bubble 8s linear infinite;
+}
+
+/* 泡の一番明るい部分を疑似要素で表現 */
+.bubble::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: scale(0.25) translate(-70%, -70%);
+  background: radial-gradient(rgba(255,255,255, 0.5), transparent);
+  border-radius: 50%;
+}
+
+/* 泡が上に浮かび上がっていくアニメーション */
+@keyframes bubble {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  99% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
 }
